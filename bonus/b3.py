@@ -1,18 +1,31 @@
-import PySimpleGUI as sg
+import PySimpleGUI as PSG
+from file_compressor import zip_file as comp
 
-compress_label = sg.Text("Select files to compress: ")
-compress_input = sg.Input(tooltip="Enter in the path of the files here")
-compress_choose_button = sg.FilesBrowse("Choose")
+compress_label = PSG.Text("Select files to compress: ")
+compress_input = PSG.Input(tooltip="Enter in the path of the files here")
+compress_choose_button = PSG.FilesBrowse("Choose", key="files")
 
-destination_label = sg.Text("Select destination folder: ")
-destination_input = sg.Input(tooltip="Enter in the path of the destination folder")
-destination_choose_button = sg.FolderBrowse("Choose")
+destination_label = PSG.Text("Select destination folder: ")
+destination_input = PSG.Input(tooltip="Enter in the path of the destination folder")
+destination_choose_button = PSG.FolderBrowse("Choose", key="folder")
 
-compress_button = sg.Button("Compress")
+compress_button = PSG.Button("Compress", key="compress")
+output = PSG.Text(key="output", text_color="green")
 
-desktop_window = sg.Window("File Compressor",
-                           layout=[[compress_label, compress_input, compress_choose_button],
+desktop_window = PSG.Window("File Compressor",
+                            layout=[[compress_label, compress_input, compress_choose_button],
                                    [destination_label, destination_input, destination_choose_button],
                                    [compress_button]])
-desktop_window.read()
+
+while True:
+    event, values = desktop_window.read()
+    filepaths = values["files"].split(";")
+    folder = values["folder"]
+    comp(filepaths, folder)
+    desktop_window["output"].update(value="Compression successful")
+
+    match event:
+        case PSG.WIN_CLOSED:
+            break
+
 desktop_window.close()

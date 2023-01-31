@@ -19,6 +19,7 @@ desktop_window = sg.Window("Daily Task Manager",
 
 while True:
 	event, values = desktop_window.read()
+
 	match event:
 		case "Add Task":
 			tasks = read_tasks()
@@ -47,3 +48,5 @@ while True:
 
 		case sg.WIN_CLOSED:
 			break
+
+desktop_window.close()
