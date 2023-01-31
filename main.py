@@ -1,5 +1,7 @@
 from functions import read_tasks, write_tasks
+import time
 
+print(f'Today is {time.strftime("%b %d, %Y, %H: %M: %S")}')
 while True:
     user_input = input('Do you want to add, show, edit, complete, or exit: ').lower().strip()
 

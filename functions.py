@@ -1,4 +1,7 @@
-def read_tasks(file_path='tasks.txt'):
+FILEPATH = 'tasks.txt'
+
+
+def read_tasks(file_path=FILEPATH):
     """
     Reads the file whose name that is inputted as the argument,
     makes a list of those items, and returns that list. Has a
@@ -9,7 +12,7 @@ def read_tasks(file_path='tasks.txt'):
     return tasks_original
 
 
-def write_tasks(tasks_original, file_path='tasks.txt'):
+def write_tasks(tasks_original, file_path=FILEPATH):
     """
     Overwrites the contents of the file that is inputted
     as the argument with the list that is inputted as the
