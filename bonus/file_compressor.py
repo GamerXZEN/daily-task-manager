@@ -10,4 +10,4 @@ def zip_file(filepaths, dest_dir):
 
 
 if __name__ == '__main__':
-	zip_file(filepaths=["e1.py", "b1.py"], dest_dir="sheesh")
+	zip_file(filepaths=["feet_to_meters.py", "b1.py"], dest_dir="sheesh")
