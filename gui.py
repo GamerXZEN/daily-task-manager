@@ -9,8 +9,12 @@ edit_button = sg.Button("Edit Task")
 complete_button = sg.Button("Complete Task")
 exit_button = sg.Button("Exit")
 
+list_box = sg.Listbox(values=read_tasks(), key="tasks",
+                      enable_events=True, size=(45, 10))
+
 desktop_window = sg.Window("Daily Task Manager",
-                           layout=[[label], [input_box, add_button]],
+                           layout=[[label], [input_box, add_button],
+                                   [list_box, edit_button]],
                            font=("Helvetica", 12))
 
 while True:
@@ -23,9 +27,20 @@ while True:
 			tasks.append(new_task)
 			write_tasks(tasks)
 
+			desktop_window["tasks"].update(values=tasks)
 		case "Edit Task":
+			task = values["tasks"]
+			new_task = values["task"] + "\n"
 
-		case "Complete Task":
+			tasks = read_tasks()
+			index = tasks.index(task)
+			tasks[index] = new_task
+			write_tasks(tasks)
+
+			desktop_window["tasks"].update(values=tasks)
+
+		case "tasks":
+			desktop_window["todo"].update(value=values["tasks"][0])
 
 		case "Exit":
 			break
