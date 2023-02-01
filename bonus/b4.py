@@ -12,7 +12,7 @@ destination_input = PSG.Input(tooltip="Enter in the path of the destination fold
 destination_choose_button = PSG.FolderBrowse("Choose", key="folder")
 
 extract_button = PSG.Button("Extract", key="extract")
-output = PSG.Text(key="output", text_color="green")
+output = PSG.Text(key="executable files", text_color="green")
 
 desktop_window = PSG.Window("File Compressor",
                             layout=[[extract_label, extract_input, extract_choose_button],
@@ -24,7 +24,7 @@ while True:
     filepath = values["files"]
     dest_dir = values["folder"]
     ext(filepath, dest_dir)
-    desktop_window["output"].update(value="Extraction successful")
+    desktop_window["executable files"].update(value="Extraction successful")
 
     match event:
         case PSG.WIN_CLOSED:

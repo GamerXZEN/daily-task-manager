@@ -10,7 +10,7 @@ destination_input = PSG.Input(tooltip="Enter in the path of the destination fold
 destination_choose_button = PSG.FolderBrowse("Choose", key="folder")
 
 compress_button = PSG.Button("Compress", key="compress")
-output = PSG.Text(key="output", text_color="green")
+output = PSG.Text(key="executable files", text_color="green")
 
 desktop_window = PSG.Window("File Compressor",
                             layout=[[compress_label, compress_input, compress_choose_button],
@@ -22,7 +22,7 @@ while True:
     filepaths = values["files"].split(";")
     folder = values["folder"]
     comp(filepaths, folder)
-    desktop_window["output"].update(value="Compression successful")
+    desktop_window["executable files"].update(value="Compression successful")
 
     match event:
         case PSG.WIN_CLOSED:

@@ -8,7 +8,7 @@ inch_label = sg.Text("Enter inches: ")
 inch_input = sg.Input(key="inches")
 
 button = sg.Button("Convert")
-output_label = sg.Text("", key="output")
+output_label = sg.Text("", key="executable files")
 
 exit_program = sg.Button("Exit")
 
@@ -24,7 +24,7 @@ while True:
     inches = float(values["inches"])
 
     result = convert(feet, inches)
-    desktop_window["output"].update(value=f"{result} m", text_color="white")
+    desktop_window["executable files"].update(value=f"{result} m", text_color="white")
 
     match event:
         case "Exit":

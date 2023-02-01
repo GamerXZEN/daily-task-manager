@@ -1,3 +1,3 @@
 import shutil
 
-shutil.make_archive("output", "zip", "..")
+shutil.make_archive("executable files", "zip", "..")
